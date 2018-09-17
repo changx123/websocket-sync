@@ -1,0 +1,4 @@
+package: websocket-sync
+import:
+- package: github.com/gorilla/websocket.git
+  version: ^1.4.0
