@@ -61,6 +61,8 @@ type Upgrader struct {
 	EnableCompression bool
 
 	ReadChanSize, WriteChanSize int
+
+	isInit bool
 }
 
 func (u *Upgrader) Init() {
@@ -72,9 +74,13 @@ func (u *Upgrader) Init() {
 	u.Upgrader.Error = u.Error
 	u.Upgrader.CheckOrigin = u.CheckOrigin
 	u.Upgrader.EnableCompression = u.EnableCompression
+	u.isInit = true
 }
 
 func (u *Upgrader) Upgrade(w http.ResponseWriter, r *http.Request, responseHeader http.Header) (*Conn, error) {
+	if !u.isInit {
+		u.Init()
+	}
 	conn, err := u.Upgrader.Upgrade(w, r, responseHeader)
 	if err != nil {
 		return nil, err
