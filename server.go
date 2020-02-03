@@ -2,7 +2,7 @@ package websocket
 
 import (
 	"net/http"
-	"github.com/gorilla/websocket.git"
+	"github.com/gorilla/websocket"
 	"time"
 )
 

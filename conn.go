@@ -1,7 +1,7 @@
 package websocket
 
 import (
-	"github.com/gorilla/websocket.git"
+	"github.com/gorilla/websocket"
 	"sync"
 )
 
